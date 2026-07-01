@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Azure Serverless Operations Analytics architecture</title>
+  <desc id="desc">Flow from source operational data through Azure Data Factory, ADLS Gen2, Synapse Serverless SQL, Gold views, and BI reporting.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="520" rx="24" fill="#f8fafc"/>
+  <text x="60" y="64" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">
+    Architecture Flow
+  </text>
+  <text x="60" y="98" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="16">
+    Low-cost Azure-native data engineering pipeline for QR printing operations
+  </text>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g filter="url(#shadow)">
+      <rect x="56" y="172" width="172" height="116" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+      <text x="142" y="214" fill="#0f172a" font-size="18" font-weight="700">Source Data</text>
+      <text x="142" y="242" fill="#1e293b" font-size="14">QR events</text>
+      <text x="142" y="263" fill="#1e293b" font-size="14">telemetry, fault logs</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="280" y="172" width="172" height="116" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+      <text x="366" y="214" fill="#0f172a" font-size="18" font-weight="700">Data Factory</text>
+      <text x="366" y="242" fill="#1e293b" font-size="14">manual starter</text>
+      <text x="366" y="263" fill="#1e293b" font-size="14">copy pipeline</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="504" y="172" width="172" height="116" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+      <text x="590" y="214" fill="#0f172a" font-size="18" font-weight="700">ADLS Gen2</text>
+      <text x="590" y="242" fill="#1e293b" font-size="14">raw JSON</text>
+      <text x="590" y="263" fill="#1e293b" font-size="14">curated target</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="728" y="172" width="172" height="116" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+      <text x="814" y="208" fill="#0f172a" font-size="18" font-weight="700">Synapse</text>
+      <text x="814" y="231" fill="#0f172a" font-size="18" font-weight="700">Serverless SQL</text>
+      <text x="814" y="260" fill="#1e293b" font-size="14">Silver cleaned views</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="952" y="172" width="172" height="116" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+      <text x="1038" y="214" fill="#0f172a" font-size="18" font-weight="700">Gold Views</text>
+      <text x="1038" y="242" fill="#1e293b" font-size="14">KPIs, quality</text>
+      <text x="1038" y="263" fill="#1e293b" font-size="14">machine health</text>
+    </g>
+  </g>
+
+  <g stroke="#334155" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M228 230 H268"/>
+    <path d="M452 230 H492"/>
+    <path d="M676 230 H716"/>
+    <path d="M900 230 H940"/>
+    <path d="M1038 288 V346 H142 V308"/>
+  </g>
+
+  <g filter="url(#shadow)" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <rect x="56" y="348" width="1068" height="92" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    <text x="590" y="386" fill="#0f172a" font-size="20" font-weight="700">BI / Reporting Layer</text>
+    <text x="590" y="416" fill="#1e293b" font-size="15">Connects to standardized Gold outputs for production quality, machine health, and downtime monitoring</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#475569">
+    <text x="60" y="484">Cost posture: no Spark pool, no Dedicated SQL Pool, no VM, no always-on compute.</text>
+  </g>
+</svg>
