@@ -36,12 +36,29 @@ The Gold layer answers the core operations questions:
 ## Architecture
 
 ```mermaid
-flowchart LR
-    A["Source API / sample generator"] --> B["Azure Data Factory"]
-    B --> C["ADLS Gen2 raw JSON"]
-    C --> D["Synapse Serverless SQL Silver views"]
-    D --> E["Gold operational KPI views"]
-    E --> F["BI / reporting layer"]
+flowchart TB
+    Source["Source data<br/>QR events, telemetry, fault logs"]
+    ADF["Azure Data Factory<br/>manual starter pipeline"]
+    Raw["ADLS Gen2 - raw<br/>JSON landing zone"]
+    SQL["Synapse Serverless SQL<br/>Silver cleaned views"]
+    Gold["Gold operational views<br/>KPIs, quality, machine health"]
+    BI["BI / reporting layer<br/>reads standardized Gold outputs"]
+
+    Source --> ADF --> Raw --> SQL --> Gold --> BI
+
+    classDef source fill:#dbeafe,stroke:#2563eb,color:#0f172a,stroke-width:2px;
+    classDef orchestrate fill:#dcfce7,stroke:#16a34a,color:#052e16,stroke-width:2px;
+    classDef storage fill:#fef3c7,stroke:#d97706,color:#451a03,stroke-width:2px;
+    classDef query fill:#ede9fe,stroke:#7c3aed,color:#1e1b4b,stroke-width:2px;
+    classDef gold fill:#fee2e2,stroke:#dc2626,color:#450a0a,stroke-width:2px;
+    classDef output fill:#e0f2fe,stroke:#0284c7,color:#082f49,stroke-width:2px;
+
+    class Source source;
+    class ADF orchestrate;
+    class Raw storage;
+    class SQL query;
+    class Gold gold;
+    class BI output;
 ```
 
 ## Gold Views
