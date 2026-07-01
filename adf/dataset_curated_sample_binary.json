@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "ls_adls_aso_analytics",
+      "type": "LinkedServiceReference"
+    },
+    "type": "Binary",
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobFSLocation",
+        "fileSystem": "curated",
+        "folderPath": "qr_printing/business_date=2026-06-30",
+        "fileName": "machine_api_response.json"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "type": "AzureBlobFS",
+    "typeProperties": {
+      "url": "https://stasoanalyticswora.dfs.core.windows.net/",
+      "authenticationType": "MSI"
+    }
+  }
+}
+

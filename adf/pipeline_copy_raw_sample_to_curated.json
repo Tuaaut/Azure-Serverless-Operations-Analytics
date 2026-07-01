@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "CopyRawSampleToCurated",
+        "type": "Copy",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.00:10:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 30
+        },
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource",
+            "storeSettings": {
+              "type": "AzureBlobFSReadSettings",
+              "recursive": false
+            }
+          },
+          "sink": {
+            "type": "BinarySink",
+            "storeSettings": {
+              "type": "AzureBlobFSWriteSettings"
+            }
+          }
+        },
+        "inputs": [
+          {
+            "referenceName": "ds_raw_qr_sample_binary",
+            "type": "DatasetReference"
+          }
+        ],
+        "outputs": [
+          {
+            "referenceName": "ds_curated_qr_sample_binary",
+            "type": "DatasetReference"
+          }
+        ]
+      }
+    ]
+  }
+}
+
