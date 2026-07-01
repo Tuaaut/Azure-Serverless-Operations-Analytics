@@ -2,6 +2,17 @@
 
 Azure-native data engineering demo for QR printing and machine telemetry operations.
 
+## Tech Stack
+
+| Layer | Tool | Role |
+|---|---|---|
+| Orchestration | Azure Data Factory | Runs the starter copy pipeline |
+| Storage | ADLS Gen2 | Stores raw and curated project files |
+| Query engine | Synapse Serverless SQL | Reads lake files and exposes Silver/Gold views |
+| Data model | T-SQL views | Standardizes operational KPI outputs |
+| Automation | Azure CLI + shell scripts | Deploys resources, ADF objects, and validation helpers |
+| Local utility | Node.js `tedious` | Runs Synapse SQL scripts from the command line |
+
 ## Business Context
 
 A beverage production line prints QR codes on every product unit. Operations teams need to know whether the line is producing at the expected speed, whether QR quality is high enough for downstream scanning, and whether machine faults are creating avoidable downtime.
@@ -24,8 +35,13 @@ The Gold layer answers the core operations questions:
 
 ## Architecture
 
-```text
-Source/API -> Azure Data Factory -> ADLS Gen2 -> Synapse Serverless SQL -> Gold operational views
+```mermaid
+flowchart LR
+    A["Source API / sample generator"] --> B["Azure Data Factory"]
+    B --> C["ADLS Gen2 raw JSON"]
+    C --> D["Synapse Serverless SQL Silver views"]
+    D --> E["Gold operational KPI views"]
+    E --> F["BI / reporting layer"]
 ```
 
 ## Gold Views
@@ -41,4 +57,10 @@ Source/API -> Azure Data Factory -> ADLS Gen2 -> Synapse Serverless SQL -> Gold 
 - ADF starter copy pipeline is deployed and has succeeded once.
 - No Spark pool, Dedicated SQL Pool, VM, or always-on compute is used.
 
-Start with [PROJECT_PLAN.md](PROJECT_PLAN.md).
+## Project Files
+
+- [PROJECT_PLAN.md](PROJECT_PLAN.md) - project scope, architecture, cost controls, and resource names
+- [docs/azure_resources.md](docs/azure_resources.md) - deployed Azure resources and tags
+- [docs/validation_results.md](docs/validation_results.md) - validated row counts and ADF run result
+- [sql/](sql/) - Synapse Serverless SQL setup, Silver views, Gold views, and sample queries
+- [adf/](adf/) - Data Factory linked service, datasets, and starter pipeline definitions
