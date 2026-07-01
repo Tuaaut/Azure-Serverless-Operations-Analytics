@@ -143,7 +143,7 @@ Start small:
 | Raw file landed | JSON exists in ADLS raw path |
 | Silver view works | Clean rows query successfully |
 | Gold views work | Three business-ready views return rows |
-| Gold contract matches | Column names keep the same business meaning as the prior implementation |
+| Gold contract matches | Column names keep stable business meaning for reporting |
 | Cost risk controlled | No Spark pool, Dedicated SQL Pool, VM, or always-on app |
 
 ## Current Azure Names

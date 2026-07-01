@@ -10,9 +10,8 @@ raw/
 
 curated/
   qr_printing/
-    fact_print_event/
-    fact_machine_telemetry_minute/
-    fact_machine_log/
+    business_date=YYYY-MM-DD/
+      machine_api_response.json
 ```
 
 Curated Parquet is intentionally optional for this starter build. Add it when file volume grows enough that repeated raw JSON scans become wasteful.
